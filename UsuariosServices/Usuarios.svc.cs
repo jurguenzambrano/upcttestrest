@@ -20,7 +20,7 @@ namespace UsuariosServices
                 NotificacionService ns = new NotificacionService();
                 string mensajeConfirmacion = "Hola " + usuarioACrear.Nombres + " " + usuarioACrear.Apellidos;
                 mensajeConfirmacion = mensajeConfirmacion + "<br/><br/>";
-                mensajeConfirmacion = mensajeConfirmacion + "Confirma la creación de tu cuenta ingresando al <a href=\"www.google.com\" target=\"_blank\">siguiente enlace</>.";
+                mensajeConfirmacion = mensajeConfirmacion + "Confirma la creación de tu cuenta ingresando al <a href=\"www.google.com\" target=\"_blank\">siguiente enlace</a>.";
                 mensajeConfirmacion = mensajeConfirmacion + "<br/><br/>MobiPay";
                 ns.EnviarCorreo(usuarioACrear.Mail,"Confirma tu cuenta", mensajeConfirmacion);
                 return usuarioDao.Crear(usuarioACrear);

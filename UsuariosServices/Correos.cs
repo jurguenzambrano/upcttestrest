@@ -13,18 +13,13 @@ namespace UsuariosServices
          * Gmail:  smtp.gmail.com  puerto:587
          * Hotmail: smtp.liva.com  puerto:25
          */
-        SmtpClient server = new SmtpClient("mailtrap.io", 2525);
+        //SmtpClient server = new SmtpClient("mailtrap.io", 2525);
+        SmtpClient server = new SmtpClient("smtp.gmail.com", 25);
 
         public Correos()
         {
-            /*
-             * Autenticacion en el Servidor
-             * Utilizaremos nuestra cuenta de correo
-             *
-             * Direccion de Correo (Gmail o Hotmail)
-             * y Contrasena correspondiente
-             */
-            server.Credentials = new System.Net.NetworkCredential("315e8416980e6f", "6241a427f47452");
+            //server.Credentials = new System.Net.NetworkCredential("315e8416980e6f", "6241a427f47452");
+            server.Credentials = new System.Net.NetworkCredential("testupcperu@gmail.com", "test159upc");
             server.EnableSsl = true;
         }
 
