@@ -14,7 +14,7 @@ namespace UsuariosServicesTest
         [TestMethod]
         public void test()
         {
-            //insertarUsuario("10243093");
+            insertarUsuario("10243091");
             
             obtenerUsuario("99999999");
             /*modificarUsuario("10243093");
@@ -51,7 +51,7 @@ namespace UsuariosServicesTest
                 js = new JavaScriptSerializer();
                 Usuario usuarioCreado = js.Deserialize<Usuario>(usuarioJson);
                 Assert.AreEqual(dni, usuarioCreado.Dni);
-                Assert.AreEqual("DE LOS PALOTES", usuarioCreado.Apellidos);
+                Assert.AreEqual("ZAMBRANO", usuarioCreado.Apellidos);
             }
             catch (WebException e)
             {
