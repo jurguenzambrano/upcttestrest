@@ -132,5 +132,38 @@ namespace UsuariosServices.Persistencia
             }
             return usuariosEncontrados;
         }
+
+        public List<Usuario> ListarPorDni(String dni)
+        {
+            List<Usuario> usuariosEncontrados = new List<Usuario>();
+            Usuario usuarioEncontrado = null;
+            string sql = "SELECT * FROM TB_USUARIO WHERE DNI = @dni";
+            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            {
+                conexion.Open();
+                using (SqlCommand comando = new SqlCommand(sql, conexion))
+                {
+                    comando.Parameters.Add(new SqlParameter("@dni", dni));
+                    using (SqlDataReader resultado = comando.ExecuteReader())
+                    {
+                        while (resultado.Read())
+                        {
+                            usuarioEncontrado = new Usuario()
+                            {
+                                Dni = (string)resultado["dni"],
+                                Apellidos = (string)resultado["dni"],
+                                Nombres = (string)resultado["Nombres"],
+                                //FechaEmision = (DateTime)resultado["FechaEmision"],
+                                Direccion = (string)resultado["Direccion"],
+                                Celular = (string)resultado["Celular"],
+                                Mail = (string)resultado["Mail"]
+                            };
+                            usuariosEncontrados.Add(usuarioEncontrado);
+                        }
+                    }
+                }
+            }
+            return usuariosEncontrados;
+        }
     }
 }

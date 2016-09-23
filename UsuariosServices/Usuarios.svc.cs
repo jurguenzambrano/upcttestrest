@@ -21,7 +21,7 @@ namespace UsuariosServices
             }
             else
             {
-                throw new WebFaultException<string>("Alumno existe",HttpStatusCode.InternalServerError );
+                throw new WebFaultException<string>("Número de DNI ya registrado",HttpStatusCode.InternalServerError );
             }
             
         }
