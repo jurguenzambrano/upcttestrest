@@ -14,13 +14,15 @@ namespace UsuariosServicesTest
         [TestMethod]
         public void test()
         {
-            insertarUsuario("10243093");
-            obtenerUsuario("10243093");
-            modificarUsuario("10243093");
+            //insertarUsuario("10243093");
+            
+            obtenerUsuario("99999999");
+            /*modificarUsuario("10243093");
             eliminarUsuario("10243093");
             modificarUsuario("10243093");
             eliminarUsuario("10243093");
             obtenerUsuario("10243093");
+            */
         }
 
         public void insertarUsuario(string dni)
@@ -49,7 +51,7 @@ namespace UsuariosServicesTest
                 js = new JavaScriptSerializer();
                 Usuario usuarioCreado = js.Deserialize<Usuario>(usuarioJson);
                 Assert.AreEqual(dni, usuarioCreado.Dni);
-                Assert.AreEqual("ZAMBRANO", usuarioCreado.Apellidos);
+                Assert.AreEqual("DE LOS PALOTES", usuarioCreado.Apellidos);
             }
             catch (WebException e)
             {
@@ -80,7 +82,7 @@ namespace UsuariosServicesTest
                 js = new JavaScriptSerializer();
                 Usuario usuarioObtenido = js.Deserialize<Usuario>(usuarioJson);
                 Assert.AreEqual(dni, usuarioObtenido.Dni);
-                Assert.AreEqual("ZAMBRANO", usuarioObtenido.Apellidos);
+                Assert.AreEqual("DE LOS PALOTES", usuarioObtenido.Apellidos);
             }
             catch (WebException e)
             {

@@ -8,12 +8,13 @@ namespace UsuariosServices.Persistencia
 {
     public class UsuarioDAO
     {
-        private string cadenaConexion = "Data Source=(local); Initial Catalog = PC01; Integrated Security = SSPI;";
+        //private string cadenaConexion = "Data Source=84f2f108-f1ef-481c-a84a-a67f016e94e3.sqlserver.sequelizer.com; Initial Catalog = PC01; Integrated Security = SSPI;";
+        private string cadenaConexion = "Server=84f2f108-f1ef-481c-a84a-a67f016e94e3.sqlserver.sequelizer.com;Database=db84f2f108f1ef481ca84aa67f016e94e3;User ID=opjckhddqfloqdsl;Password=qJPpHN35stUAP4gNNhN6oZ8q5VFKSx3bj8Ue8ND4RzUfDQzSgU2DBUnyJysUhqk3;";
 
         public Usuario Crear(Usuario usuarioACrear)
         {
             Usuario usuarioCreado = null;
-            string sql = "INSERT INTO T_USUARIO (dni,apellidos,nombres,direccion,celular,mail) VALUES (@Dni, @Apellidos, @Nombres, @Direccion, @Celular, @Mail)";
+            string sql = "INSERT INTO TB_USUARIO (dni,apellidos,nombres,direccion,celular,mail) VALUES (@Dni, @Apellidos, @Nombres, @Direccion, @Celular, @Mail)";
             using (SqlConnection conexion = new SqlConnection(cadenaConexion))
             {
                 conexion.Open();
@@ -36,7 +37,7 @@ namespace UsuariosServices.Persistencia
         public Usuario Obtener(string dni)
         {
             Usuario usuarioEncontrado = null;
-            string sql = "SELECT * FROM T_USUARIO WHERE DNI = @Dni";
+            string sql = "SELECT * FROM TB_USUARIO WHERE DNI = @Dni";
 
             using (SqlConnection conexion = new SqlConnection(cadenaConexion))
             {
@@ -68,7 +69,7 @@ namespace UsuariosServices.Persistencia
         public Usuario Modificar(Usuario usuarioAModificar)
         {
             Usuario usuarioModificado = null;
-            string sql = "UPDATE T_USUARIO set Apellidos = @Apellidos, Nombres = @Nombres, Direccion = @Direccion, Celular = @Celular, Mail = @Mail WHERE dni = @Dni";
+            string sql = "UPDATE TB_USUARIO set Apellidos = @Apellidos, Nombres = @Nombres, Direccion = @Direccion, Celular = @Celular, Mail = @Mail WHERE dni = @Dni";
             using (SqlConnection conexion = new SqlConnection(cadenaConexion))
             {
                 conexion.Open();
@@ -89,7 +90,7 @@ namespace UsuariosServices.Persistencia
         }
         public void Eliminar(string dni)
         {
-            string sql = "DELETE T_USUARIO WHERE DNI = @Dni";
+            string sql = "DELETE TB_USUARIO WHERE DNI = @Dni";
             using (SqlConnection conexion = new SqlConnection(cadenaConexion))
             {
                 conexion.Open();
@@ -104,7 +105,7 @@ namespace UsuariosServices.Persistencia
         {
             List<Usuario> usuariosEncontrados = new List<Usuario>();
             Usuario usuarioEncontrado = null;
-            string sql = "SELECT * FROM T_USUARIO";
+            string sql = "SELECT * FROM TB_USUARIO";
             using (SqlConnection conexion = new SqlConnection(cadenaConexion))
             {
                 conexion.Open();
