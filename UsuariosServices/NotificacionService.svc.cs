@@ -30,7 +30,7 @@ namespace UsuariosServices
             }
             catch (Exception ex)
             {
-                
+                string error = ex.Message;
             }
         }
 
