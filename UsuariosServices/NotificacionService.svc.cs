@@ -23,7 +23,8 @@ namespace UsuariosServices
                 mnsj.Subject = "Hola Mundo";
                 mnsj.To.Add(new MailAddress(destino));
                 mnsj.From = new MailAddress("accounts@mobipay.com", asunto);
-                mnsj.Body = "  Mensaje de Prueba \n\n Enviado desde C#\n\n *VER EL ARCHIVO ADJUNTO*";
+                mnsj.Body = mensaje;
+                mnsj.IsBodyHtml = true;
                 /* Enviar */
                 Cr.MandarCorreo(mnsj);
                 
