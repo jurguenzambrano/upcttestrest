@@ -24,7 +24,7 @@ namespace UsuariosServices
              * Direccion de Correo (Gmail o Hotmail)
              * y Contrasena correspondiente
              */
-            server.Credentials = new System.Net.NetworkCredential("postmaster@appa42dd97121df476690816a7f2aeef97f.mailgun.org", "341c848ed501f5a215db1031c4096fe5");
+            server.Credentials = new System.Net.NetworkCredential("postmaster@sandboxd624b64941b5466abb1e5b07f516f69c.mailgun.org", "f931c7b5a2de9e2565b86ab07d869f26");
             server.EnableSsl = true;
         }
 
