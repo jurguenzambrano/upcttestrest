@@ -61,7 +61,7 @@ namespace UsuariosServicesTest
                 string error = reader.ReadToEnd();
                 js = new JavaScriptSerializer();
                 string mensaje = js.Deserialize<string>(error);
-                Assert.AreEqual("Alumno existe", mensaje);
+                Assert.AreEqual("Número de DNI ya registrado", mensaje);
             }
         }
         public void obtenerUsuario(string dni){
