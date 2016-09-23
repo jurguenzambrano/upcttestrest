@@ -13,7 +13,7 @@ namespace UsuariosServices
     public class NotificacionService : INotificacionService
     {
 
-        public void EnviarCorreo(string destino, string mensaje)
+        public void EnviarCorreo(string destino, string asunto, string mensaje)
         {
             try
             {
@@ -21,8 +21,8 @@ namespace UsuariosServices
                 MailMessage mnsj = new MailMessage();
 
                 mnsj.Subject = "Hola Mundo";
-                mnsj.To.Add(new MailAddress("amiguito@domain.com"));
-                mnsj.From = new MailAddress("jurguenzambrano@gmail.com", "Nombre Apellido");
+                mnsj.To.Add(new MailAddress(destino));
+                mnsj.From = new MailAddress("accounts@mobipay.com", asunto);
                 mnsj.Body = "  Mensaje de Prueba \n\n Enviado desde C#\n\n *VER EL ARCHIVO ADJUNTO*";
                 /* Enviar */
                 Cr.MandarCorreo(mnsj);

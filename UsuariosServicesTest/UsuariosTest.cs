@@ -14,9 +14,9 @@ namespace UsuariosServicesTest
         [TestMethod]
         public void test()
         {
-            insertarUsuario("10243091");
+            //insertarUsuario("10243091");
             
-            //obtenerUsuario("99999999");
+            obtenerUsuario("99999999");
             /*modificarUsuario("10243093");
             eliminarUsuario("10243093");
             modificarUsuario("10243093");

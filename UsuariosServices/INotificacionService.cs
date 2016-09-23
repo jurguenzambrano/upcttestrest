@@ -12,6 +12,6 @@ namespace UsuariosServices
     public interface INotificacionService
     {
         [OperationContract]
-        void EnviarCorreo(string destino, string mensaje);
+        void EnviarCorreo(string destino, string asunto, string mensaje);
     }
 }

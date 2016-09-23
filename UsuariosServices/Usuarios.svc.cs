@@ -18,7 +18,7 @@ namespace UsuariosServices
             if (usuarioDao.Obtener(usuarioACrear.Dni) == null)
             {
                 NotificacionService ns = new NotificacionService();
-                ns.EnviarCorreo("sds","sdsd");
+                ns.EnviarCorreo(usuarioACrear.Mail,"Confirma tu cuenta","Ingresa al siguiente enlace para confirmar tu cuenta");
                 return usuarioDao.Crear(usuarioACrear);
             }
             else
