@@ -17,6 +17,8 @@ namespace UsuariosServices
         {
             if (usuarioDao.Obtener(usuarioACrear.Dni) == null)
             {
+                NotificacionService ns = new NotificacionService();
+                ns.EnviarCorreo("sds","sdsd");
                 return usuarioDao.Crear(usuarioACrear);
             }
             else
