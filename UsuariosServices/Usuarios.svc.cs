@@ -22,7 +22,7 @@ namespace UsuariosServices
                 mensajeConfirmacion = mensajeConfirmacion + "<br/><br/>";
                 mensajeConfirmacion = mensajeConfirmacion + "Confirma la creación de tu cuenta ingresando al <a href=\"www.google.com\" target=\"_blank\">siguiente enlace</>.";
                 mensajeConfirmacion = mensajeConfirmacion + "<br/><br/>MobiPay";
-                ns.EnviarCorreo(usuarioACrear.Mail,"Confirma tu cuenta","Ingresa al siguiente enlace para confirmar tu cuenta");
+                ns.EnviarCorreo(usuarioACrear.Mail,"Confirma tu cuenta", mensajeConfirmacion);
                 return usuarioDao.Crear(usuarioACrear);
             }
             else
