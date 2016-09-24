@@ -70,6 +70,43 @@ namespace UsuariosServices.Persistencia
 
             return usuarioEncontrado;
         }
+
+        public Usuario ObtenerPorEmail(string email)
+        {
+            Usuario usuarioEncontrado = null;
+            string sql = "SELECT * FROM TB_USUARIO WHERE MAIL = @Mail";
+
+            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            {
+                conexion.Open();
+                using (SqlCommand comando = new SqlCommand(sql, conexion))
+                {
+                    comando.Parameters.Add(new SqlParameter("@Mail", email));
+                    using (SqlDataReader resultado = comando.ExecuteReader())
+                    {
+                        if (resultado.Read())
+                        {
+                            usuarioEncontrado = new Usuario()
+                            {
+                                Dni = (string)resultado["dni"],
+                                Apellidos = (string)resultado["apellidos"],
+                                Nombres = (string)resultado["Nombres"],
+                                //FechaEmision = (DateTime) resultado["FechaEmision"],
+                                Direccion = (string)resultado["Direccion"],
+                                Celular = (string)resultado["Celular"],
+                                Mail = (string)resultado["Mail"],
+                                Estado = (string)resultado["Estado"],
+                                Clave = (string)resultado["Clave"]
+                            };
+
+                        }
+                    }
+                }
+            }
+
+            return usuarioEncontrado;
+        }
+
         public Usuario Modificar(Usuario usuarioAModificar)
         {
             Usuario usuarioModificado = null;

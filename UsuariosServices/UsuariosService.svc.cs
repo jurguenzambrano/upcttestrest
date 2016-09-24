@@ -15,21 +15,27 @@ namespace UsuariosServices
     public class UsuariosService : IUsuariosService
     {
         private UsuarioDAO usuarioDao = new UsuarioDAO();
+
         public Usuario CrearUsuario(Usuario usuarioACrear)
         {
-            if (usuarioDao.Obtener(usuarioACrear.Dni) == null)
-            {
-                NotificacionService ns = new NotificacionService();
-                string mensajeConfirmacion = "Hola " + usuarioACrear.Nombres + " " + usuarioACrear.Apellidos;
-                mensajeConfirmacion = mensajeConfirmacion + "<br/><br/>";
-                mensajeConfirmacion = mensajeConfirmacion + "Confirma la creación de tu cuenta ingresando al <a href=\"www.google.com\" target=\"_blank\">siguiente enlace</a>.";
-                mensajeConfirmacion = mensajeConfirmacion + "<br/><br/>MobiPay";
-                ns.EnviarCorreo(usuarioACrear.Mail, "Confirma tu cuenta", mensajeConfirmacion);
-                return usuarioDao.Crear(usuarioACrear);
-            }
-            else
+            if (usuarioDao.Obtener(usuarioACrear.Dni) != null)
             {
                 throw new WebFaultException<string>("Número de DNI ya registrado", HttpStatusCode.InternalServerError);
+            }
+
+            if (usuarioDao.ObtenerPorEmail(usuarioACrear.Mail) != null)
+            {
+                throw new WebFaultException<string>("Correo electrónico ya registrado", HttpStatusCode.InternalServerError);
+            }
+
+            NotificacionService ns = new NotificacionService();
+            string mensajeConfirmacion = "Hola " + usuarioACrear.Nombres + " " + usuarioACrear.Apellidos;
+            mensajeConfirmacion = mensajeConfirmacion + "<br/><br/>";
+            mensajeConfirmacion = mensajeConfirmacion + "Confirma la creación de tu cuenta ingresando al <a href=\"www.google.com\" target=\"_blank\">siguiente enlace</a>.";
+            mensajeConfirmacion = mensajeConfirmacion + "<br/><br/>MobiPay";
+            ns.EnviarCorreo(usuarioACrear.Mail, "Confirma tu cuenta", mensajeConfirmacion);
+            return usuarioDao.Crear(usuarioACrear);
+                
             }
         }
 

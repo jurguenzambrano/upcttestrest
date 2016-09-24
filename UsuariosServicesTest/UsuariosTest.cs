@@ -36,7 +36,7 @@ namespace UsuariosServicesTest
             JavaScriptSerializer js;
 
             // Prueba de creación de usuario 
-            usuario = "{\"Apellidos\":\"ZAMBRANO\",\"Celular\":\"992330838\",\"Direccion\":\"su casa\",\"Dni\":\"" + dni + "\",\"Mail\":\"jurguenzambrano@gmail.com\",\"Nombres\":\"Jurguen\",\"Estado\":\"0\",\"Clave\":\"perico\"}";
+            usuario = "{\"Apellidos\":\"ZAMBRANO\",\"Celular\":\"992330838\",\"Direccion\":\"su casa\",\"Dni\":\"" + dni + "\",\"Mail\":\"jurguen@gmail.com\",\"Nombres\":\"Jurguen\",\"Estado\":\"0\",\"Clave\":\"perico\"}";
             data = Encoding.UTF8.GetBytes(usuario);
             
             req = (HttpWebRequest) WebRequest.Create(endPoint + "usuarios");
@@ -107,7 +107,7 @@ namespace UsuariosServicesTest
             JavaScriptSerializer js;
 
             // Modifica Usuario
-            usuario = "{\"Apellidos\":\"ZAMBRANO MORENO\",\"Celular\":\"992330838\",\"Direccion\":\"su casa\",\"Dni\":\""+ dni +"\",\"Mail\":\"jurguenzambrano@gmail.com\",\"Nombres\":\"Jurguen\"}";
+            usuario = "{\"Apellidos\":\"ZAMBRANO MORENO\",\"Celular\":\"992330838\",\"Direccion\":\"su casa\",\"Dni\":\""+ dni +"\",\"Mail\":\"jurguen@gmail.com\",\"Nombres\":\"Jurguen\"}";
             data = Encoding.UTF8.GetBytes(usuario);
             req = (HttpWebRequest)WebRequest.Create(endPoint + "usuarios");
             req.Method = "PUT";

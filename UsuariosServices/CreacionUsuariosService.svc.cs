@@ -18,12 +18,11 @@ namespace UsuariosServices
 
         public Usuario LoginUsuario(Usuario usuarioLogin)
         {
-            
-            usuario = usuarioDao.Obtener(usuarioLogin.Dni);
+            usuario = usuarioDao.ObtenerPorEmail(usuarioLogin.Mail);
 
             if ( usuario == null)
             {
-                throw new WebFaultException<string>("Usuario no registrado", HttpStatusCode.InternalServerError);
+                throw new WebFaultException<string>("Correo Electrónico no registrado", HttpStatusCode.InternalServerError);
             }
             else if (usuario.Estado.Equals("0"))
             {
