@@ -60,15 +60,22 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CreacionUsuariosService.svc" />
     <Content Include="NotificacionService.svc" />
     <Content Include="Usuarios.svc" />
+    <Content Include="UsuariosService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Correos.cs" />
+    <Compile Include="CreacionUsuariosService.svc.cs">
+      <DependentUpon>CreacionUsuariosService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Errores\RepetidoException.cs" />
+    <Compile Include="ICreacionUsuariosService.cs" />
     <Compile Include="INotificacionService.cs" />
     <Compile Include="IUsuarios.cs" />
+    <Compile Include="IUsuariosService.cs" />
     <Compile Include="NotificacionService.svc.cs">
       <DependentUpon>NotificacionService.svc</DependentUpon>
     </Compile>
@@ -77,6 +84,9 @@
     <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="Usuarios.svc.cs">
       <DependentUpon>Usuarios.svc</DependentUpon>
+    </Compile>
+    <Compile Include="UsuariosService.svc.cs">
+      <DependentUpon>UsuariosService.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

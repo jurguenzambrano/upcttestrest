@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
 using System.Text;
 using UsuariosServices.Persistencia;
+using System.ServiceModel.Web;
+using System.Net;
 
 namespace UsuariosServices
 {
-    public class Usuarios : IUsuarios
+    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "UsuariosService" en el código, en svc y en el archivo de configuración a la vez.
+    // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione UsuariosService.svc o UsuariosService.svc.cs en el Explorador de soluciones e inicie la depuración.
+    public class UsuariosService : IUsuariosService
     {
         private UsuarioDAO usuarioDao = new UsuarioDAO();
         public Usuario CrearUsuario(Usuario usuarioACrear)
@@ -22,14 +24,13 @@ namespace UsuariosServices
                 mensajeConfirmacion = mensajeConfirmacion + "<br/><br/>";
                 mensajeConfirmacion = mensajeConfirmacion + "Confirma la creación de tu cuenta ingresando al <a href=\"www.google.com\" target=\"_blank\">siguiente enlace</a>.";
                 mensajeConfirmacion = mensajeConfirmacion + "<br/><br/>MobiPay";
-                ns.EnviarCorreo(usuarioACrear.Mail,"Confirma tu cuenta", mensajeConfirmacion);
+                ns.EnviarCorreo(usuarioACrear.Mail, "Confirma tu cuenta", mensajeConfirmacion);
                 return usuarioDao.Crear(usuarioACrear);
             }
             else
             {
-                throw new WebFaultException<string>("Número de DNI ya registrado",HttpStatusCode.InternalServerError );
+                throw new WebFaultException<string>("Número de DNI ya registrado", HttpStatusCode.InternalServerError);
             }
-            
         }
 
         public Usuario ObtenerUsuario(string dni)
@@ -59,14 +60,13 @@ namespace UsuariosServices
 
         public void EliminarUsuario(string dni)
         {
-            
             if (usuarioDao.Obtener(dni) == null)
             {
                 throw new WebFaultException<string>("Alumno no existe", HttpStatusCode.InternalServerError);
             }
             else
             {
-                usuarioDao.Eliminar(dni); 
+                usuarioDao.Eliminar(dni);
             }
         }
 

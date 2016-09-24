@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
 using System.Text;
+using System.ServiceModel.Web;
 
 namespace UsuariosServices
 {
     [ServiceContract]
-    public interface IUsuarios
+    public interface IUsuariosService
     {
         [OperationContract]
-        [WebInvoke(Method="POST", UriTemplate="Usuarios", ResponseFormat=WebMessageFormat.Json) ]
+        [WebInvoke(Method = "POST", UriTemplate = "Usuarios", ResponseFormat = WebMessageFormat.Json)]
         Usuario CrearUsuario(Usuario usuarioACrear);
 
         [OperationContract]
