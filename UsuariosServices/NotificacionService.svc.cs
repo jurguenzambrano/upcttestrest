@@ -20,9 +20,9 @@ namespace UsuariosServices
                 Correos Cr = new Correos();
                 MailMessage mnsj = new MailMessage();
 
-                mnsj.Subject = "Hola Mundo";
+                mnsj.Subject = asunto;
                 mnsj.To.Add(new MailAddress(destino));
-                mnsj.From = new MailAddress("accounts@mobipay.com", asunto);
+                mnsj.From = new MailAddress("accounts@mobipay.com", "Soporte MobiPay");
                 mnsj.Body = mensaje;
                 mnsj.IsBodyHtml = true;
                 /* Enviar */
