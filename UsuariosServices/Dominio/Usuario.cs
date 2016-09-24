@@ -27,5 +27,11 @@ namespace UsuariosServices
         [DataMember]
         public string Mail { get; set; }
 
+        [DataMember]
+        public string Estado { get; set; }
+
+        [DataMember]
+        public string Clave { get; set; }
+
     }
 }

@@ -14,8 +14,8 @@ namespace UsuariosServicesTest
         [TestMethod]
         public void test()
         {
-            //insertarUsuario("10243091");
-            obtenerUsuario("99999999");
+            insertarUsuario("10243091");
+            //obtenerUsuario("99999999");
             /*modificarUsuario("10243093");
             eliminarUsuario("10243093");
             modificarUsuario("10243093");
@@ -35,8 +35,9 @@ namespace UsuariosServicesTest
             JavaScriptSerializer js;
 
             // Prueba de creación de usuario 
-            usuario = "{\"Apellidos\":\"ZAMBRANO\",\"Celular\":\"992330838\",\"Direccion\":\"su casa\",\"Dni\":\"" + dni +"\",\"Mail\":\"jurguenzambrano@gmail.com\",\"Nombres\":\"Jurguen\"}";
+            usuario = "{\"Apellidos\":\"ZAMBRANO\",\"Celular\":\"992330838\",\"Direccion\":\"su casa\",\"Dni\":\"" + dni + "\",\"Mail\":\"jurguenzambrano@gmail.com\",\"Nombres\":\"Jurguen\",\"Estado\":\"0\",\"Clave\":\"perico\"}";
             data = Encoding.UTF8.GetBytes(usuario);
+            
             req = (HttpWebRequest) WebRequest.Create("http://upc-test-rest.apphb.com/Usuarios.svc/usuarios");
             req.Method = "POST";
             req.ContentLength = data.Length;

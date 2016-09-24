@@ -70,6 +70,7 @@
     <Compile Include="CreacionUsuariosService.svc.cs">
       <DependentUpon>CreacionUsuariosService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Dominio\Acceso.cs" />
     <Compile Include="Errores\RepetidoException.cs" />
     <Compile Include="ICreacionUsuariosService.cs" />
     <Compile Include="INotificacionService.cs" />

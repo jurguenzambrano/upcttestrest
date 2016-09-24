@@ -14,7 +14,7 @@ namespace UsuariosServices.Persistencia
         public Usuario Crear(Usuario usuarioACrear)
         {
             Usuario usuarioCreado = null;
-            string sql = "INSERT INTO TB_USUARIO (dni,apellidos,nombres,direccion,celular,mail) VALUES (@Dni, @Apellidos, @Nombres, @Direccion, @Celular, @Mail)";
+            string sql = "INSERT INTO TB_USUARIO (dni,apellidos,nombres,direccion,celular,mail,estado,clave) VALUES (@Dni, @Apellidos, @Nombres, @Direccion, @Celular, @Mail, @Estado, @Clave)";
             using (SqlConnection conexion = new SqlConnection(cadenaConexion))
             {
                 conexion.Open();
@@ -27,6 +27,8 @@ namespace UsuariosServices.Persistencia
                     comando.Parameters.Add(new SqlParameter("@Direccion", usuarioACrear.Direccion));
                     comando.Parameters.Add(new SqlParameter("@Celular", usuarioACrear.Celular));
                     comando.Parameters.Add(new SqlParameter("@Mail", usuarioACrear.Mail));
+                    comando.Parameters.Add(new SqlParameter("@Estado", "0"));
+                    comando.Parameters.Add(new SqlParameter("@Clave", usuarioACrear.Clave));
                     comando.ExecuteNonQuery();
                 }
             }
@@ -56,7 +58,9 @@ namespace UsuariosServices.Persistencia
                                 //FechaEmision = (DateTime) resultado["FechaEmision"],
                                 Direccion = (string) resultado["Direccion"],
                                 Celular = (string) resultado["Celular"],
-                                Mail = (string) resultado["Mail"]
+                                Mail = (string) resultado["Mail"],
+                                Estado = (string) resultado["Estado"],
+                                Clave = (string) resultado["Clave"]
                             };
 
                         }
@@ -69,7 +73,7 @@ namespace UsuariosServices.Persistencia
         public Usuario Modificar(Usuario usuarioAModificar)
         {
             Usuario usuarioModificado = null;
-            string sql = "UPDATE TB_USUARIO set Apellidos = @Apellidos, Nombres = @Nombres, Direccion = @Direccion, Celular = @Celular, Mail = @Mail WHERE dni = @Dni";
+            string sql = "UPDATE TB_USUARIO set Apellidos = @Apellidos, Nombres = @Nombres, Direccion = @Direccion, Celular = @Celular, Mail = @Mail, Clave = @Clave, Estado = @Estado WHERE dni = @Dni";
             using (SqlConnection conexion = new SqlConnection(cadenaConexion))
             {
                 conexion.Open();
@@ -82,6 +86,8 @@ namespace UsuariosServices.Persistencia
                     comando.Parameters.Add(new SqlParameter("@Direccion", usuarioAModificar.Direccion));
                     comando.Parameters.Add(new SqlParameter("@Celular", usuarioAModificar.Celular));
                     comando.Parameters.Add(new SqlParameter("@Mail", usuarioAModificar.Mail));
+                    comando.Parameters.Add(new SqlParameter("@Estado", usuarioAModificar.Estado));
+                    comando.Parameters.Add(new SqlParameter("@Clave", usuarioAModificar.Clave));
                     comando.ExecuteNonQuery();
                 }
             }
@@ -156,7 +162,9 @@ namespace UsuariosServices.Persistencia
                                 //FechaEmision = (DateTime)resultado["FechaEmision"],
                                 Direccion = (string)resultado["Direccion"],
                                 Celular = (string)resultado["Celular"],
-                                Mail = (string)resultado["Mail"]
+                                Mail = (string)resultado["Mail"],
+                                Estado = (string)resultado["Estado"],
+                                Clave = (string)resultado["Clave"]
                             };
                             usuariosEncontrados.Add(usuarioEncontrado);
                         }

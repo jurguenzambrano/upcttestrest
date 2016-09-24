@@ -15,5 +15,6 @@ namespace UsuariosServicesTest
         public DateTime FechaEmision { get; set; }
         public string Mail { get; set; }
         public string Nombres { get; set; }
+        public string Estado { get; set; }
     }
 }
