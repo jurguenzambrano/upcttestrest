@@ -15,7 +15,6 @@ namespace UsuariosServicesTest
         public void test()
         {
             //insertarUsuario("10243091");
-            
             obtenerUsuario("99999999");
             /*modificarUsuario("10243093");
             eliminarUsuario("10243093");
@@ -38,7 +37,7 @@ namespace UsuariosServicesTest
             // Prueba de creación de usuario 
             usuario = "{\"Apellidos\":\"ZAMBRANO\",\"Celular\":\"992330838\",\"Direccion\":\"su casa\",\"Dni\":\"" + dni +"\",\"Mail\":\"jurguenzambrano@gmail.com\",\"Nombres\":\"Jurguen\"}";
             data = Encoding.UTF8.GetBytes(usuario);
-            req = (HttpWebRequest) WebRequest.Create("http://upc-test-rest.apphb.com/Usuarios.svc/Usuarios");
+            req = (HttpWebRequest) WebRequest.Create("http://upc-test-rest.apphb.com/Usuarios.svc/usuarios");
             req.Method = "POST";
             req.ContentLength = data.Length;
             req.ContentType = "application/json";
@@ -72,7 +71,7 @@ namespace UsuariosServicesTest
             JavaScriptSerializer js;
 
             // Obtener Usuario
-            req = (HttpWebRequest)WebRequest.Create("http://upc-test-rest.apphb.com/Usuarios.svc/Usuarios/" + dni);
+            req = (HttpWebRequest)WebRequest.Create("http://upc-test-rest.apphb.com/Usuarios.svc/usuarios/" + dni);
             req.Method = "GET";
             try
             {
@@ -108,7 +107,7 @@ namespace UsuariosServicesTest
             // Modifica Usuario
             usuario = "{\"Apellidos\":\"ZAMBRANO MORENO\",\"Celular\":\"992330838\",\"Direccion\":\"su casa\",\"Dni\":\""+ dni +"\",\"Mail\":\"jurguenzambrano@gmail.com\",\"Nombres\":\"Jurguen\"}";
             data = Encoding.UTF8.GetBytes(usuario);
-            req = (HttpWebRequest)WebRequest.Create("http://upc-test-rest.apphb.com/Usuarios.svc/Usuarios");
+            req = (HttpWebRequest)WebRequest.Create("http://upc-test-rest.apphb.com/Usuarios.svc/usuarios");
             req.Method = "PUT";
             req.ContentLength = data.Length;
             req.ContentType = "application/json";
@@ -143,7 +142,7 @@ namespace UsuariosServicesTest
             JavaScriptSerializer js;
 
             // Eliminar Usuario
-            req = (HttpWebRequest)WebRequest.Create("http://upc-test-rest.apphb.com/Usuarios.svc/Usuarios/" + dni);
+            req = (HttpWebRequest)WebRequest.Create("http://upc-test-rest.apphb.com/Usuarios.svc/usuarios/" + dni);
             req.Method = "DELETE";
             try {
                 res = (HttpWebResponse)req.GetResponse();
