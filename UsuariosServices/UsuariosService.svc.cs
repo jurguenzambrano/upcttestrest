@@ -35,8 +35,6 @@ namespace UsuariosServices
             mensajeConfirmacion = mensajeConfirmacion + "<br/><br/>MobiPay";
             ns.EnviarCorreo(usuarioACrear.Mail, "Confirma tu cuenta", mensajeConfirmacion);
             return usuarioDao.Crear(usuarioACrear);
-                
-            }
         }
 
         public Usuario ObtenerUsuario(string dni)
